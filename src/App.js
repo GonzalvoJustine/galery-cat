@@ -3,7 +3,7 @@ import './style/App.scss';
 import axios from 'axios';
 import loading from './images/loading.gif';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Router, Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 const url = 'https://api.thecatapi.com/v1/images/search?limit=12';
 const breedsUrl = 'https://api.thecatapi.com/v1/breeds';
@@ -11,8 +11,7 @@ const breedsUrl = 'https://api.thecatapi.com/v1/breeds';
 // Création d'un tableau qui contient toutes nos pages
 const pageNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-function App() {
-
+function App () {
   // Initialise le state qui va contenir nos photos de chats
   const [pictures, setPictures] = React.useState([]);
   const [currentPage, setCurrentPage] = React.useState(25);
@@ -21,10 +20,10 @@ function App() {
   const [selected, setSelected] = React.useState('');
   const [type, setType] = React.useState('');
 
-  //Déclencher fetchBreeds seulement au lancement de la page
+  // Déclencher fetchBreeds seulement au lancement de la page
   React.useEffect(fetchBreeds, []);
 
-  //Déclencher fetchPictures une fois que l'action va ce lancer et envoyer une nouvelle curentPage
+  // Déclencher fetchPictures une fois que l'action va ce lancer et envoyer une nouvelle curentPage
   React.useEffect(fetchCats, [currentPage, selected, type]);
 
   return (
@@ -110,17 +109,17 @@ function App() {
    * Selectionner la race de chat
    * @param event
    */
-  function handleSelect(event) {
+  function handleSelect (event) {
     setSelected(event.target.value);
   }
 
   /**
    * Récupèrer la liste des races de chat
    */
-  function fetchBreeds() {
-    axios.get(breedsUrl).then(function(response) {
+  function fetchBreeds () {
+    axios.get(breedsUrl).then(function (response) {
       const breeds = response.data.map((breed) => {
-        return { id: breed.id, name: breed.name }
+        return { id: breed.id, name: breed.name };
       });
       setBreeds(breeds);
     });
@@ -129,8 +128,7 @@ function App() {
   /**
    * Intéragir avec l'API pour récupèrer des données
    */
-  function fetchCats() {
-
+  function fetchCats () {
     setIsLoading(true);
     setPictures([]);
 
@@ -140,7 +138,6 @@ function App() {
       setIsLoading(false);
     });
   }
-
 }
 
 export default App;
