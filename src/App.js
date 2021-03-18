@@ -69,7 +69,7 @@ function App () {
           {/* Afficher les images de chats */}
           <div className='Pictures'>
               {pictures.map((picture, index) => (
-                <img className='Picture shadow m-3 bg-white rounded' key={index} src={picture.url} alt="Photo de chat"/>
+                <img className='Picture shadow m-3 bg-white rounded' key={index} src={picture.url} alt="Chat"/>
               ))}
           </div>
           {/* Afficher les images de chats */}
@@ -82,17 +82,17 @@ function App () {
           <nav className='d-flex justify-content-center'>
             <ul className="pagination">
               <li className="page-item">
-                <a className="page-link" href="#" aria-label="Previous">
+                <a className="page-link" href="/" aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
                 </a>
               </li>
               {pageNumbers.map((pageNumber, index) => (
                 <li className="page-item" key={index} onClick={() => setCurrentPage(pageNumber)}>
-                  <a className="page-link" href="#">{pageNumber}</a>
+                  <a className="page-link" href={index}>{pageNumber}</a>
                 </li>
               ))}
               <li className="page-item">
-                <a className="page-link" href="#" aria-label="Next">
+                <a className="page-link" href="/" aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
                 </a>
               </li>
